@@ -11,19 +11,25 @@ import { AppService } from './app.service';
 import { VideoModule } from './video/video.module';
 
 @Module({
-  imports: [VideoModule,ScheduleModule.forRoot(),HttpModule,GraphQLModule.forRoot<ApolloDriverConfig>({
-    autoSchemaFile: join(process.cwd(),'src/graphql-schema.gql'),
-    driver: ApolloDriver
-  }),TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'lokinava',
-    database: 'postgres',
-    entities: ["dist/**/*.entity{.ts,.js}"],
-    synchronize: true
-  })],
+  imports: [
+    VideoModule,
+    ScheduleModule.forRoot(),
+    HttpModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
+      driver: ApolloDriver,
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USER_NAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

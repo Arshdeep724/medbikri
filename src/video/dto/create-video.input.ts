@@ -1,7 +1,15 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
 export class CreateVideoInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @Field()
+  title: string;
+  @Field()
+  description: string;
+  @Field()
+  url: string;
+  @Field()
+  publishedDate: string;
+  @Field()
+  thumbnail: string;
 }

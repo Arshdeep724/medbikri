@@ -13,5 +13,10 @@ type Video {
 
 type Query {
   getAllVideos: [Video!]!
-  addYTdata: Video!
+  searchByTitleAndDescription(filter: VideoFilter!): Video!
+}
+
+input VideoFilter {
+  title: String!
+  description: String!
 }

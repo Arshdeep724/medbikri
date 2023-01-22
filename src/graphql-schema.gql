@@ -1,0 +1,17 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Video {
+  id: String!
+  title: String!
+  description: String!
+  url: String!
+  publishedDate: String!
+  thumbnail: String!
+}
+
+type Query {
+  getAllVideos: [Video!]!
+  addYTdata: Video!
+}
